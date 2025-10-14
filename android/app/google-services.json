@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846983690123",
+    "project_id": "webprofil-a8956",
+    "storage_bucket": "webprofil-a8956.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846983690123:android:452825617c1b6ae3f2a18e",
+        "android_client_info": {
+          "package_name": "com.sukorame.webprofil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb_cuzN3IX0CD4xpLNptgt8rBSDpEWoF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
