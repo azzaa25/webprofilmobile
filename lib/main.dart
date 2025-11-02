@@ -11,6 +11,9 @@ import 'package:webprofil/config/firebase_options.dart';
 import 'package:webprofil/config/supabase_config.dart'; 
 // Menggunakan HomeShellPage yang merupakan Shell Navigasi
 import 'package:webprofil/home/home_shell_page.dart'; 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:webprofil/services/notification_service.dart';
+import 'package:webprofil/chat/notification_popup_page.dart';
 
 // Variabel SUPABASE_URL dan SUPABASE_ANON_KEY diasumsikan diimpor dari config/supabase_config.dart
 
@@ -40,6 +43,23 @@ Future<void> main() async {
     initError = (initError != null ? '$initError\n' : '') + 'Gagal inisialisasi Supabase: $e';
     debugPrint('Gagal inisialisasi Supabase: $e');
   }
+  // -----------------------------
+  // Inisialisasi NotificationService
+  // -----------------------------
+  final notificationService = NotificationService();
+  await notificationService.initialize();
+
+  // Tambahkan callback untuk FCM klik
+  NotificationService.onFCMMessageClicked = (RemoteMessage message) {
+    if (NotificationService.navigatorKey.currentState != null) {
+      NotificationService.navigatorKey.currentState!.push(
+        MaterialPageRoute(
+          builder: (_) => NotificationPopupPage(message: message),
+        ),
+      );
+    }
+  };
+  // -----------------------------
 
   runApp(MyApp(initError: initError));
 }
@@ -71,6 +91,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Web Profil Sukorame',
       debugShowCheckedModeBanner: false,
+      navigatorKey: NotificationService.navigatorKey,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
