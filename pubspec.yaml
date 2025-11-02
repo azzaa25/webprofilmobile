@@ -58,6 +58,7 @@ dependencies:
   latlong2: ^0.9.0
   qr_flutter: ^4.1.0
   flutter_local_notifications: 17.2.1
+  encrypt: ^5.0.1
   # --- Akhir Dependensi Firebase ---
 
 dev_dependencies:

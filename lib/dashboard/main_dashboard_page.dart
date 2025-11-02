@@ -8,6 +8,7 @@ import 'package:webprofil/home/home_shell_page.dart';
 import 'package:webprofil/galeri/dashboard_galeri_page.dart'; 
 import 'package:webprofil/galeri/manage_kategori_page.dart'; 
 import 'package:webprofil/services/analytics_service.dart'; 
+import 'package:webprofil/aes/main_crypto_page.dart'; // <<< TAMBAH INI
 
 class MainDashboardPage extends StatefulWidget {
   const MainDashboardPage({super.key});
@@ -156,6 +157,12 @@ class _MainDashboardPageState extends State<MainDashboardPage> {
             ListTile(leading: const Icon(Icons.category), title: const Text('Kelola Kategori Galeri'), onTap: () {
               Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => const ManageKategoriPage()));
             }),
+            // VVVV FITUR BARU: SECURE NOTES AES/CBC VVVV
+            const Divider(),
+            ListTile(leading: const Icon(Icons.lock_person, color: Colors.deepPurple), title: const Text('Secure Notes (AES/CBC)'), onTap: () {
+              Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => const MainCryptoPage()));
+            }),
+            // ^^^^ FITUR BARU: SECURE NOTES AES/CBC VVVV
           ],
         ),
       ),
